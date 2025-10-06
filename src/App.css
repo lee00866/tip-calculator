@@ -1,14 +1,15 @@
-h1 {
-  padding-left: 20px;
+.box {
+  max-width: 880px;
+  margin: auto;
 }
 
 .card {
   max-width: 880px;
-  margin: 36px auto;
-  background: var(--color-bg);
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
-  padding: 16px;
+  margin: auto;
+  /* background: var(--color-bg); */
+  /* border: 1px solid #e5e7eb; */
+  /* box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06); */
+  padding: 10px 0;
 }
 
 .row {
@@ -19,8 +20,8 @@ h1 {
 
 .cell {
   height: 22px;
-  border-bottom: 1px solid #e2e8f0;
-  border-right: 1px solid #e2e8f0;
+  border: 1px solid #e2e8f0;
+  /* border-right: 1px solid #e2e8f0; */
   padding: 10px 12px;
   font-size: 14px;
   font-variant-numeric: tabular-nums;

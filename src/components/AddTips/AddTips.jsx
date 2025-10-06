@@ -67,7 +67,7 @@ export default function AddTips() {
 
   return (
     <>
-      <h1>Tip Calculator💸</h1>
+      <h1 className="box">Tip Calculator💸</h1>
       <div className="card">
         <div className="row">
           <div className="cell cell--index">(1)</div>
@@ -202,7 +202,7 @@ export default function AddTips() {
               <strong className="cell cell--num">
                 {currency.format(perKitchenEach)}
               </strong>
-              <div className="cell cell--index">-</div>
+              <div className="cell">-</div>
             </div>
           );
         })}
@@ -237,10 +237,17 @@ export default function AddTips() {
               <strong className="cell cell--num">
                 {currency.format(perServerEach)}
               </strong>
-              <div className="cell cell--index">-</div>
+              <div className="cell">-</div>
             </div>
           );
         })}
+      </div>
+
+      <div className="box">
+        <strong>How to use</strong>
+        <br />
+        ① Fill in the inputs for (1), (2), (3), and (4).
+        <br />② Input today's number of staff in (8) and (9).
       </div>
     </>
   );
