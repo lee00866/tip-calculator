@@ -1,11 +1,11 @@
 import "./App.css";
-import InputForm from "./components/InputForm/InputForm";
+import AddTips from "./components/AddTips/AddTips";
 
 function App() {
   return (
-    <div>
-      <InputForm />
-    </div>
+    <>
+      <AddTips />
+    </>
   );
 }
 

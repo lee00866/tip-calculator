@@ -1,0 +1,69 @@
+.card {
+  max-width: 880px;
+  margin: 36px auto;
+  background: var(--color-bg);
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+  padding: 16px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 64px 1fr 220px 220px;
+  align-items: center;
+}
+
+.cell {
+  border-bottom: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.row > .cell:last-child {
+  border-right: none;
+}
+.sheet > .row:last-child .cell {
+  border-bottom: none;
+}
+
+/* 줄무늬 */
+.row:nth-child(even) .cell {
+  background: #fcfdff;
+}
+
+/* 정렬 헬퍼 */
+.cell--index {
+  text-align: center;
+  color: #475569;
+  font-weight: 600;
+}
+.cell--label {
+  color: #334155;
+  font-weight: 600;
+}
+.cell--num,
+.cell--value {
+  text-align: right;
+}
+.cell--muted {
+  color: #94a3b8;
+  text-align: center;
+}
+
+.cell-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  text-align: right;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.staffCnt {
+  width: 20%;
+  margin-left: 15px;
+}
