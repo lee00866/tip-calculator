@@ -78,6 +78,9 @@ export default function AddTips() {
           <div className="cell">
             <input
               className="cell cell-input"
+              onInput={(e) => {
+                e.target.value = e.target.value.replace(/[^0-9.]/g, "");
+              }}
               type="number"
               id="cash"
               name="cash"
@@ -100,6 +103,9 @@ export default function AddTips() {
             <input
               className="cell cell-input"
               type="number"
+              onInput={(e) => {
+                e.target.value = e.target.value.replace(/[^0-9.]/g, "");
+              }}
               id="machineD"
               name="machineD"
               inputMode="decimal"
@@ -121,6 +127,9 @@ export default function AddTips() {
             <input
               className="cell cell-input"
               type="number"
+              onInput={(e) => {
+                e.target.value = e.target.value.replace(/[^0-9.]/g, "");
+              }}
               id="machineT"
               name="machineT"
               inputMode="decimal"
@@ -142,6 +151,9 @@ export default function AddTips() {
             <input
               className="cell-input"
               type="number"
+              onInput={(e) => {
+                e.target.value = e.target.value.replace(/[^0-9.]/g, "");
+              }}
               id="online"
               name="online"
               inputMode="decimal"
@@ -179,6 +191,9 @@ export default function AddTips() {
             <input
               className="staffCnt"
               type="number"
+              onInput={(e) => {
+                e.target.value = e.target.value.replace(/[^0-9.]/g, "");
+              }}
               id="kitchen"
               name="kitchen"
               inputMode="decimal"
@@ -214,6 +229,9 @@ export default function AddTips() {
             <input
               className="staffCnt"
               type="number"
+              onInput={(e) => {
+                e.target.value = e.target.value.replace(/[^0-9.]/g, "");
+              }}
               id="server"
               name="server"
               inputMode="decimal"

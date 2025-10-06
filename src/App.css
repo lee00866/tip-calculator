@@ -1,6 +1,7 @@
 .box {
   max-width: 880px;
   margin: auto;
+  padding: 10px 0;
 }
 
 .card {
@@ -9,7 +10,6 @@
   /* background: var(--color-bg); */
   /* border: 1px solid #e5e7eb; */
   /* box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06); */
-  padding: 10px 0;
 }
 
 .row {
