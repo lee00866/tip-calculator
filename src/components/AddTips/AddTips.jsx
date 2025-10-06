@@ -66,172 +66,182 @@ export default function AddTips() {
   }, [cash, machineD, machineT, online, kitchen, server]);
 
   return (
-    <div className="card">
-      <div className="row">
-        <div className="cell cell--index">(1)</div>
-        <label className="cell cell--label" for="cash">
-          Cash Tips
-        </label>
-        <div className="cell">-</div>
-        <input
-          className="cell cell-input"
-          type="number"
-          id="cash"
-          name="cash"
-          inputMode="decimal"
-          step="0.01"
-          min="0"
-          value={cash}
-          onChange={(e) => setCash(e.target.value)}
-          placeholder="0.00"
-        />
-      </div>
-      <div className="row">
-        <div className="cell cell--index">(2)</div>
-        <label className="cell cell--label" for="machineD">
-          Machine(Dine in) Tips
-        </label>
-        <div className="cell">-</div>
-        <input
-          className="cell cell-input"
-          type="number"
-          id="machineD"
-          name="machineD"
-          inputMode="decimal"
-          step="0.01"
-          min="0"
-          value={machineD}
-          onChange={(e) => setMachineD(e.target.value)}
-          placeholder="0.00"
-        />
-      </div>
-      <div className="row">
-        <div className="cell cell--index">(3)</div>
-        <label className="cell cell--label" for="machineT">
-          Machine(To go) Tips
-        </label>
-        <div className="cell">-</div>
-        <input
-          className="cell cell-input"
-          type="number"
-          id="machineT"
-          name="machineT"
-          inputMode="decimal"
-          step="0.01"
-          min="0"
-          value={machineT}
-          onChange={(e) => setMachineT(e.target.value)}
-          placeholder="0.00"
-        />
-      </div>
-      <div className="row">
-        <div className="cell cell--index">(4)</div>
-        <label className="cell cell--label" for="online">
-          Online Order(Pick up) Tips
-        </label>
-        <div className="cell">-</div>
-        <input
-          className="cell cell-input"
-          type="number"
-          id="online"
-          name="online"
-          inputMode="decimal"
-          step="0.01"
-          min="0"
-          value={online}
-          onChange={(e) => setOnline(e.target.value)}
-          placeholder="0.00"
-        />
-      </div>
-
-      <div className="row">
-        <div className="cell cell--index">(5)</div>
-        <div className="cell cell--label">Total Tip</div>
-        <div className="cell">(1)+(2)+(3)+(4)</div>
-        <div className="cell cell--num">{currency.format(total)}</div>
-      </div>
-      <div className="row">
-        <div className="cell cell--index">(6)</div>
-        <div className="cell cell--label">Admin(10%)</div>
-        <div className="cell">-</div>
-        <strong className="cell cell--num">{currency.format(admin)}</strong>
-      </div>
-      <div className="row">
-        <div className="cell cell--index">(7)</div>
-        <div className="cell cell--label">Tip Pool(90%)</div>
-        <div className="cell">(5) * 0.9</div>
-        <strong className="cell cell--num">{currency.format(pooling)}</strong>
-      </div>
-      <div className="row">
-        <div className="cell cell--index">(8)</div>
-        <div className="cell cell--label">
-          Kitchen Tips(40%)
-          <input
-            className="staffCnt"
-            type="number"
-            id="kitchen"
-            name="kitchen"
-            inputMode="decimal"
-            min="0"
-            value={kitchen}
-            placeholder="0"
-            onChange={(e) => setKitchen(e.target.value)}
-          />
-        </div>
-        <div className="cell">(7) * 0.4</div>
-        <strong className="cell cell--num">
-          {currency.format(kitchenPool)}
-        </strong>
-      </div>
-
-      {Array.from({ length: kitchen }).map((_, i) => {
-        return (
-          <div className="row">
-            <div className="cell cell--index">-</div>
-            <div className="cell cell--label">Kitchen {i}</div>
-            <strong className="cell cell--num">
-              {currency.format(perKitchenEach)}
-            </strong>
-            <div className="cell cell--index">-</div>
+    <>
+      <h1>Tip Calculator💸</h1>
+      <div className="card">
+        <div className="row">
+          <div className="cell cell--index">(1)</div>
+          <label className="cell cell--label" htmlFor="cash">
+            Cash Tips
+          </label>
+          <div className="cell">-</div>
+          <div className="cell">
+            <input
+              className="cell cell-input"
+              type="number"
+              id="cash"
+              name="cash"
+              inputMode="decimal"
+              step="0.01"
+              min="0"
+              value={cash}
+              onChange={(e) => setCash(e.target.value)}
+              placeholder="0.00"
+            />
           </div>
-        );
-      })}
-
-      <div className="row">
-        <div className="cell cell--index">(9)</div>
-        <div className="cell cell--label">
-          Server Tips(60%)
-          <input
-            className="staffCnt"
-            type="number"
-            id="server"
-            name="server"
-            inputMode="decimal"
-            min="0"
-            value={server}
-            placeholder="0"
-            onChange={(e) => setServer(e.target.value)}
-          />
         </div>
-        <div className="cell">(7) * 0.6</div>
-        <strong className="cell cell--num">
-          {currency.format(serverPool)}
-        </strong>
-      </div>
+        <div className="row">
+          <div className="cell cell--index">(2)</div>
+          <label className="cell cell--label" htmlFor="machineD">
+            Machine(Dine in) Tips
+          </label>
+          <div className="cell">-</div>
+          <div className="cell">
+            <input
+              className="cell cell-input"
+              type="number"
+              id="machineD"
+              name="machineD"
+              inputMode="decimal"
+              step="0.01"
+              min="0"
+              value={machineD}
+              onChange={(e) => setMachineD(e.target.value)}
+              placeholder="0.00"
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="cell cell--index">(3)</div>
+          <label className="cell cell--label" htmlFor="machineT">
+            Machine(To go) Tips
+          </label>
+          <div className="cell">-</div>
+          <div className="cell">
+            <input
+              className="cell cell-input"
+              type="number"
+              id="machineT"
+              name="machineT"
+              inputMode="decimal"
+              step="0.01"
+              min="0"
+              value={machineT}
+              onChange={(e) => setMachineT(e.target.value)}
+              placeholder="0.00"
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="cell cell--index">(4)</div>
+          <label className="cell cell--label" htmlFor="online">
+            Online Order(Pick up) Tips
+          </label>
+          <div className="cell">-</div>
+          <div className="cell">
+            <input
+              className="cell-input"
+              type="number"
+              id="online"
+              name="online"
+              inputMode="decimal"
+              step="0.01"
+              min="0"
+              value={online}
+              onChange={(e) => setOnline(e.target.value)}
+              placeholder="0.00"
+            />
+          </div>
+        </div>
 
-      {/* <div>
-        <label for="server">server</label>
-        <input
-          type="number"
-          id="server"
-          name="server"
-          inputMode="decimal"
-          min="0"
-          placeholder="0"
-          onChange={(e) => setServer(e.target.value)}
-        />
-        <strong>{currency.format(perServerEach)}</strong>
-      </div> */}
-    </div>
+        <div className="row">
+          <div className="cell cell--index">(5)</div>
+          <div className="cell cell--label">Total Tip</div>
+          <div className="cell">(1)+(2)+(3)+(4)</div>
+          <strong className="cell cell--num">{currency.format(total)}</strong>
+        </div>
+        <div className="row">
+          <div className="cell cell--index">(6)</div>
+          <div className="cell cell--label">Admin(10%)</div>
+          <div className="cell">-</div>
+          <strong className="cell cell--num">{currency.format(admin)}</strong>
+        </div>
+        <div className="row">
+          <div className="cell cell--index">(7)</div>
+          <div className="cell cell--label">Tip Pool(90%)</div>
+          <div className="cell">(5) * 0.9</div>
+          <strong className="cell cell--num">{currency.format(pooling)}</strong>
+        </div>
+        <div className="row">
+          <div className="cell cell--index">(8)</div>
+          <div className="cell cell--label">
+            Kitchen Tips(40%)
+            <input
+              className="staffCnt"
+              type="number"
+              id="kitchen"
+              name="kitchen"
+              inputMode="decimal"
+              min="0"
+              value={kitchen}
+              placeholder="0"
+              onChange={(e) => setKitchen(e.target.value)}
+            />
+          </div>
+          <div className="cell">(7) * 0.4</div>
+          <strong className="cell cell--num">
+            {currency.format(kitchenPool)}
+          </strong>
+        </div>
+
+        {Array.from({ length: kitchen }).map((_, i) => {
+          return (
+            <div className="row">
+              <div className="cell cell--index">-</div>
+              <div className="cell cell--label">Kitchen {i + 1}</div>
+              <strong className="cell cell--num">
+                {currency.format(perKitchenEach)}
+              </strong>
+              <div className="cell cell--index">-</div>
+            </div>
+          );
+        })}
+
+        <div className="row">
+          <div className="cell cell--index">(9)</div>
+          <div className="cell cell--label">
+            Server Tips(60%)
+            <input
+              className="staffCnt"
+              type="number"
+              id="server"
+              name="server"
+              inputMode="decimal"
+              min="0"
+              value={server}
+              placeholder="0"
+              onChange={(e) => setServer(e.target.value)}
+            />
+          </div>
+          <div className="cell">(7) * 0.6</div>
+          <strong className="cell cell--num">
+            {currency.format(serverPool)}
+          </strong>
+        </div>
+
+        {Array.from({ length: server }).map((_, i) => {
+          return (
+            <div className="row">
+              <div className="cell cell--index">-</div>
+              <div className="cell cell--label">Server {i + 1}</div>
+              <strong className="cell cell--num">
+                {currency.format(perServerEach)}
+              </strong>
+              <div className="cell cell--index">-</div>
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 }
