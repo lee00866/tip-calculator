@@ -9,7 +9,11 @@ const currency = new Intl.NumberFormat("en-CA", {
 const ADMIN_RATE = 0.1; //10%
 const KITCHEN_PERCENTAGE = 0.4; //40%
 
-const trunc2 = (n) => Math.trunc(n * 100) / 100; //소수 셋째자리에서 버림
+// const trunc2 = (n) => Math.trunc(n * 100) / 100; //소수 셋째자리에서 버림
+
+// const trunc2 = (n) => Number(n.toFixed(2));
+
+const trunc2 = (n) => Math.trunc((n + Number.EPSILON) * 100) / 100;
 
 export default function AddTips() {
   const [cash, setCash] = useState("");
@@ -43,6 +47,8 @@ export default function AddTips() {
     serverPool,
     perKitchenEach,
     perServerEach,
+    k,
+    s,
   } = useMemo(() => {
     const c = toNum(cash);
     const d = toNum(machineD);
@@ -74,6 +80,8 @@ export default function AddTips() {
       serverPool: goingServer,
       perKitchenEach: perK,
       perServerEach: perS,
+      k,
+      s,
     };
   }, [cash, machineD, machineT, online, kitchen, server]);
 
@@ -211,7 +219,7 @@ export default function AddTips() {
           </strong>
         </div>
 
-        {Array.from({ length: kitchen }).map((_, i) => {
+        {Array.from({ length: k }).map((_, i) => {
           return (
             <div className="row">
               <div className="cell cell--index">-</div>
@@ -246,7 +254,7 @@ export default function AddTips() {
           </strong>
         </div>
 
-        {Array.from({ length: server }).map((_, i) => {
+        {Array.from({ length: s }).map((_, i) => {
           return (
             <div className="row">
               <div className="cell cell--index">-</div>
