@@ -16,7 +16,7 @@ Example: $45.678 → $45.67
 
 ## Screenshot
 
-(./screenshot/main.jpeg)
+![Main Screenshot](./screenshot/main.jpeg)
 
 ## Demo
 
