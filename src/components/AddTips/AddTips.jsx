@@ -1,7 +1,5 @@
 import React, { useMemo } from "react";
-import Total from "../Total/Total";
 import { useState } from "react";
-import Result from "../Result/Result";
 
 const currency = new Intl.NumberFormat("en-CA", {
   style: "currency",
@@ -22,6 +20,15 @@ export default function AddTips() {
   const [server, setServer] = useState("");
 
   const toNum = (v) => (v === "" ? 0 : Number(v));
+
+  const handleReset = () => {
+    setCash("");
+    setMachineD("");
+    setMachineT("");
+    setOnline("");
+    setKitchen("");
+    setServer("");
+  };
 
   const {
     total,
@@ -67,7 +74,12 @@ export default function AddTips() {
 
   return (
     <>
-      <h1 className="box">Tip Calculator💸</h1>
+      <div className="toolbar">
+        <h1>Tip Calculator💸</h1>
+        <button className="btn" type="button" onClick={handleReset}>
+          Reset
+        </button>
+      </div>
       <div className="card">
         <div className="row">
           <div className="cell cell--index">(1)</div>
@@ -266,6 +278,13 @@ export default function AddTips() {
         <br />
         ① Fill in the inputs for (1), (2), (3), and (4).
         <br />② Input today's number of staff in (8) and (9).
+      </div>
+      <div className="box">
+        <strong>How the calculation works</strong>
+        <br />
+        Each individual tip is truncated to two decimal places.
+        <br />
+        Example: $45.678 → $45.67
       </div>
     </>
   );
