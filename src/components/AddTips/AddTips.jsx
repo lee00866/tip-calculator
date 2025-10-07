@@ -9,7 +9,7 @@ const currency = new Intl.NumberFormat("en-CA", {
 const ADMIN_RATE = 0.1; //10%
 const KITCHEN_PERCENTAGE = 0.4; //40%
 
-const floor2 = (n) => Math.floor(n * 100) / 100; //소수 셋째자리에서 버림
+const trunc2 = (n) => Math.trunc(n * 100) / 100; //소수 셋째자리에서 버림
 
 export default function AddTips() {
   const [cash, setCash] = useState("");
@@ -19,7 +19,12 @@ export default function AddTips() {
   const [kitchen, setKitchen] = useState("");
   const [server, setServer] = useState("");
 
-  const toNum = (v) => (v === "" ? 0 : Number(v));
+  const toNum = (v) => {
+    if (v === "" || v == null) return 0;
+
+    const n = typeof v === "number" ? v : parseFloat(v);
+    return Number.isFinite(n) ? n : 0;
+  };
 
   const handleReset = () => {
     setCash("");
@@ -43,10 +48,10 @@ export default function AddTips() {
     const d = toNum(machineD);
     const t = toNum(machineT);
     const o = toNum(online);
-    const k = toNum(kitchen);
-    const s = toNum(server);
+    const k = Math.max(0, Math.trunc(toNum(kitchen)));
+    const s = Math.max(0, Math.trunc(toNum(server)));
 
-    const sum = (c || 0) + (d || 0) + (t || 0) + (o || 0);
+    const sum = c + d + t + o;
 
     //Admin 10% deduct
     const adminFee = Math.round(sum * ADMIN_RATE * 100) / 100;
@@ -54,12 +59,12 @@ export default function AddTips() {
     const afterDeduction = Math.round((sum - adminFee) * 100) / 100;
 
     //Kitchen tip pool
-    const goingKitchen = floor2(afterDeduction * KITCHEN_PERCENTAGE);
+    const goingKitchen = trunc2(afterDeduction * KITCHEN_PERCENTAGE);
     //Server tip pool
     const goingServer = afterDeduction - goingKitchen;
 
-    const perK = kitchen > 0 ? floor2(goingKitchen / k) : 0;
-    const perS = server > 0 ? floor2(goingServer / s) : 0;
+    const perK = kitchen > 0 ? trunc2(goingKitchen / k) : 0;
+    const perS = server > 0 ? trunc2(goingServer / s) : 0;
 
     return {
       total: sum,
@@ -90,9 +95,6 @@ export default function AddTips() {
           <div className="cell">
             <input
               className="cell cell-input"
-              onInput={(e) => {
-                e.target.value = e.target.value.replace(/[^0-9.]/g, "");
-              }}
               type="number"
               id="cash"
               name="cash"
@@ -115,9 +117,6 @@ export default function AddTips() {
             <input
               className="cell cell-input"
               type="number"
-              onInput={(e) => {
-                e.target.value = e.target.value.replace(/[^0-9.]/g, "");
-              }}
               id="machineD"
               name="machineD"
               inputMode="decimal"
@@ -139,9 +138,6 @@ export default function AddTips() {
             <input
               className="cell cell-input"
               type="number"
-              onInput={(e) => {
-                e.target.value = e.target.value.replace(/[^0-9.]/g, "");
-              }}
               id="machineT"
               name="machineT"
               inputMode="decimal"
@@ -163,9 +159,6 @@ export default function AddTips() {
             <input
               className="cell-input"
               type="number"
-              onInput={(e) => {
-                e.target.value = e.target.value.replace(/[^0-9.]/g, "");
-              }}
               id="online"
               name="online"
               inputMode="decimal"
@@ -203,9 +196,6 @@ export default function AddTips() {
             <input
               className="staffCnt"
               type="number"
-              onInput={(e) => {
-                e.target.value = e.target.value.replace(/[^0-9.]/g, "");
-              }}
               id="kitchen"
               name="kitchen"
               inputMode="decimal"
@@ -241,9 +231,6 @@ export default function AddTips() {
             <input
               className="staffCnt"
               type="number"
-              onInput={(e) => {
-                e.target.value = e.target.value.replace(/[^0-9.]/g, "");
-              }}
               id="server"
               name="server"
               inputMode="decimal"

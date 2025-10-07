@@ -29,9 +29,6 @@
 .card {
   max-width: 880px;
   margin: auto;
-  /* background: var(--color-bg); */
-  /* border: 1px solid #e5e7eb; */
-  /* box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06); */
 }
 
 .row {
@@ -43,7 +40,6 @@
 .cell {
   height: 22px;
   border: 1px solid #e2e8f0;
-  /* border-right: 1px solid #e2e8f0; */
   padding: 10px 12px;
   font-size: 14px;
   font-variant-numeric: tabular-nums;
